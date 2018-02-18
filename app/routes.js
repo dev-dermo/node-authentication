@@ -28,7 +28,11 @@ module.exports = function(app, passport) {
 	});
 
 	// process the signup form
-	// app.post('/signup', /* more coming soon */);
+	app.post('/signup', passport.authenticate('local-signup', {
+		sucessRedirect: '/profile',
+		failureRedirect: '/signup',
+		failureFlash: true
+	}));
 
 	// =============
 	// PROFILE SECTION
